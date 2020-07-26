@@ -14,7 +14,9 @@
           :plant="plant"
           class="plant-list__plant"
         />
-        <button type="submit">Water Selected Plants</button>
+        <button class="plant-list__water-button" type="submit">
+          Water Selected Plants
+        </button>
         <router-link class="button" to="/add-plant"
           >Add a new plant</router-link
         >
