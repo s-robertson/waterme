@@ -22,7 +22,7 @@
         <input v-model="days" type="number" />
       </label>
     </div>
-    <button type="submit">Add plant</button>
+    <button type="submit">{{ submitLabel }}</button>
   </form>
 </template>
 
@@ -32,9 +32,10 @@ import { mapActions } from "vuex";
 export default {
   name: "PlantForm",
   data() {
+    console.log(this.plant, "PLANT");
     return {
       plantName: "",
-      days: 7,
+      days: 0,
       errors: []
     };
   },
@@ -48,16 +49,37 @@ export default {
   computed: {
     hasErrors() {
       return this.errors.length > 0;
+    },
+    submitLabel() {
+      if (this.plant) {
+        return "Save Changes";
+      }
+
+      return "Add Plant";
+    }
+  },
+  mounted() {
+    if (this.plant) {
+      this.plantName = this.plant.name;
+      this.days = this.plant.days;
     }
   },
   methods: {
-    ...mapActions(["addPlant"]),
+    ...mapActions(["addPlant", "updatePlant"]),
     handleSubmit() {
       if (this.validate()) {
-        this.addPlant({
-          name: this.plantName,
-          days: this.days
-        });
+        if (this.plant) {
+          this.updatePlant({
+            id: this.plant.id,
+            name: this.plantName,
+            days: this.days
+          });
+        } else {
+          this.addPlant({
+            name: this.plantName,
+            days: this.days
+          });
+        }
 
         this.$router.push("/");
       }

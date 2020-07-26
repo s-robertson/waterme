@@ -7,10 +7,10 @@
       <p>Select plants to water:</p>
       <form action="" @submit.prevent="handleSubmit">
         <PlantCard
-          v-for="(plant, plantIndex) in sortedPlants"
-          :key="plantIndex"
-          :is-checked="isChecked(plantIndex)"
-          @toggle="toggled => handlePlantToggle(toggled, plantIndex)"
+          v-for="plant in sortedPlants"
+          :key="plant.id"
+          :is-checked="isChecked(plant.id)"
+          @toggle="toggled => handlePlantToggle(toggled, plant.id)"
           :plant="plant"
           class="plant-list__plant"
         />

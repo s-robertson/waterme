@@ -5,7 +5,9 @@ exports[`PlantCard component Should render correctly 1`] = `
   <div class="plant-card__options"><label class="plant-card__label"><input type="checkbox">
       My Plant
     </label>
-    <settingsicon-stub alt="Edit My Plant" class="plant-card__settings"></settingsicon-stub>
+    <router-link-stub to="edit-plant/undefined">
+      <settingsicon-stub alt="Edit My Plant" class="plant-card__settings"></settingsicon-stub>
+    </router-link-stub>
   </div>
   <div class="plant-card__watering-progress">
     <div class="plant-card__watering-progress-text">

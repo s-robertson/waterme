@@ -10,6 +10,6 @@ exports[`PlantForm component Should render correctly 1`] = `
       <input type="text"></label></div>
   <div><label>
       Days between watering:
-      <input type="number"></label></div> <button type="submit">Add plant</button>
+      <input type="number"></label></div> <button type="submit">Add Plant</button>
 </form>
 `;

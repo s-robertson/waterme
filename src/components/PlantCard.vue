@@ -5,7 +5,12 @@
         <input :checked="isChecked" type="checkbox" @click="handleChange" />
         {{ plant.name }}
       </label>
-      <SettingsIcon class="plant-card__settings" :alt="`Edit ${plant.name}`" />
+      <router-link :to="`edit-plant/${plant.id}`">
+        <SettingsIcon
+          class="plant-card__settings"
+          :alt="`Edit ${plant.name}`"
+        />
+      </router-link>
     </div>
     <div class="plant-card__watering-progress">
       <div class="plant-card__watering-progress-text">
@@ -29,11 +34,9 @@ export default {
   computed: {
     daysRemaining() {
       const daysBetweenWatering = this.plant.days;
-
       const lastWatered = moment
         .unix(this.plant.lastWatered)
         .set({ second: 0, minute: 0, hour: 0 });
-
       const now = moment().set({ second: 0, minute: 0, hour: 0 });
       const daysSinceLastWatered = now.diff(lastWatered, "days");
       const daysRemaining = daysBetweenWatering - daysSinceLastWatered;

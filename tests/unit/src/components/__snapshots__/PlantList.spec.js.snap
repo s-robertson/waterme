@@ -1,14 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PlantForm component Should render correctly 1`] = `
-<div class="plant-list">
-  <p>
-    You haven't added any plants yet!
-  </p>
-  <!---->
-</div>
-`;
-
 exports[`PlantForm component Should render correctly when plants have been added 1`] = `
 <div class="plant-list">
   <!---->
@@ -16,7 +7,10 @@ exports[`PlantForm component Should render correctly when plants have been added
     <p>Select plants to water:</p>
     <form action="">
       <plantcard-stub plant="[object Object]" class="plant-list__plant"></plantcard-stub>
-      <plantcard-stub plant="[object Object]" class="plant-list__plant"></plantcard-stub> <button type="submit">Water Selected Plants</button>
+      <plantcard-stub plant="[object Object]" class="plant-list__plant"></plantcard-stub>
+      <plantcard-stub plant="[object Object]" class="plant-list__plant"></plantcard-stub> <button type="submit" class="plant-list__water-button">
+        Water Selected Plants
+      </button>
       <router-link-stub to="/add-plant" class="button">Add a new plant</router-link-stub>
     </form>
   </div>

@@ -13,14 +13,17 @@ describe("PlantForm component", () => {
   beforeEach(() => {
     mockPlants = [
       {
+        id: "123",
         name: "Plant One",
         days: 10
       },
       {
+        id: "456",
         name: "Plant Two",
         days: 10
       },
       {
+        id: "789",
         name: "Plant Three",
         days: 10
       }
@@ -82,7 +85,7 @@ describe("PlantForm component", () => {
     cardComponents.at(1).vm.$emit("toggle", true);
     cardComponents.at(1).vm.$emit("toggle", false);
     cardComponents.at(2).vm.$emit("toggle", true);
-    expect(wrapper.vm.plantsToWater).toEqual([0, 2]);
+    expect(wrapper.vm.plantsToWater).toEqual(["123", "789"]);
   });
 
   it("Should mark selected plants as watered", () => {
@@ -110,8 +113,8 @@ describe("PlantForm component", () => {
     cardComponents.at(2).vm.$emit("toggle", true);
     wrapper.find("form").trigger("submit");
     expect(mockActions.waterPlants).toHaveBeenCalledWith(expect.any(Object), [
-      0,
-      2
+      "123",
+      "789"
     ]);
   });
 });

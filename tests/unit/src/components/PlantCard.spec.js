@@ -1,7 +1,9 @@
 import MockDate from "mockdate";
 import moment from "moment";
-import { shallowMount } from "@vue/test-utils";
+import { shallowMount, createLocalVue } from "@vue/test-utils";
 import PlantCard from "@/components/PlantCard";
+
+const localVue = createLocalVue();
 
 describe("PlantCard component", () => {
   beforeAll(() => {
@@ -21,7 +23,9 @@ describe("PlantCard component", () => {
     const wrapper = shallowMount(PlantCard, {
       propsData: {
         plant: mockPlant
-      }
+      },
+      stubs: ["router-link"],
+      localVue
     });
     expect(wrapper.html()).toMatchSnapshot();
   });
@@ -49,7 +53,9 @@ describe("PlantCard component", () => {
       const wrapper = shallowMount(PlantCard, {
         propsData: {
           plant: mockPlant
-        }
+        },
+        stubs: ["router-link"],
+        localVue
       });
 
       expect(wrapper.vm.daysRemaining).toBe(expectedDaysRemaining);
