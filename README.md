@@ -1,4 +1,6 @@
-# waterme
+# WaterMe
+
+A fun little web app to help you keep track of watering your plants.
 
 ## Project setup
 ```
@@ -29,6 +31,3 @@ npm run test:e2e
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlantForm component Should render correctly 1`] = `
+<div class="plant-list">
+  <p>
+    You haven't added any plants yet!
+  </p>
+  <!---->
+</div>
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlantForm component Should render correctly 1`] = `
+<form action="">
+  <div aria-live="assertive">
+    <!---->
+  </div>
+  <div><label>
+      Name:
+      <input type="text"></label></div>
+  <div><label>
+      Days between watering:
+      <input type="number"></label></div> <button type="submit">Add plant</button>
+</form>
+`;

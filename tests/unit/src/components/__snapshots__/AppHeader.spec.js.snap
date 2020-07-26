@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppHeader component Should render correctly 1`] = `
+<div class="app-header">
+  <div class="app-header__logo-wrapper">
+    <planticon-stub alt="" role="presentation" class="app-header__logo"></planticon-stub>
+    <div>
+      Water Me
+    </div>
+  </div>
+</div>
+`;

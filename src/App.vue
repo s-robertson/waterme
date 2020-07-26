@@ -1,32 +1,33 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <AppHeader />
+    <div class="app__content">
+      <router-view />
     </div>
-    <router-view />
+    <AppFooter />
   </div>
 </template>
 
 <style lang="scss">
+@import "./assets/variables";
+@import "./assets/app.scss";
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  min-height: 100%;
+  position: relative;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.app__content {
+  margin: 2rem auto 0 auto;
+  padding-bottom: 4rem;
+  max-width: $app-max-width;
 }
 </style>
+
+<script>
+import AppHeader from "@/components/AppHeader";
+import AppFooter from "@/components/AppFooter";
+export default {
+  components: { AppFooter, AppHeader }
+};
+</script>

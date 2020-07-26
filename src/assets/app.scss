@@ -1,0 +1,48 @@
+@import './variables';
+
+html {
+  background: $brand-primary;
+  color: $font-primary;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+a {
+  color: $link-primary;
+}
+
+label {
+  display: inline-block;
+  cursor: pointer;
+}
+
+button, .button {
+  background: $button-primary;
+  color: $font-primary;
+  border: 0;
+  padding: 0.5rem .75rem;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
