@@ -25,6 +25,9 @@ export default new Vuex.Store({
     addPlant(state, plant) {
       state.plants.push(plant);
     },
+    deletePlant(state, id) {
+      state.plants = state.plants.filter(plant => plant.id !== id);
+    },
     updatePlant(state, plantToUpdate) {
       state.plants = state.plants.map(plant => {
         if (plant.id !== plantToUpdate.id) {
@@ -63,6 +66,9 @@ export default new Vuex.Store({
         }
       });
     },
+    deletePlant({ commit }, id) {
+      commit("deletePlant", id);
+    },
     updatePlant({ commit }, plantToUpdate) {
       commit("updatePlant", plantToUpdate);
     },
@@ -74,7 +80,7 @@ export default new Vuex.Store({
   getters: {
     sortedPlants(state) {
       return state.plants.sort((a, b) =>
-        a.lastWatered < b.lastWatered ? 1 : -1
+        a.lastWatered > b.lastWatered ? 1 : -1
       );
     },
     plantById(state) {

@@ -5,9 +5,13 @@ exports[`PlantCard component Should render correctly 1`] = `
   <div class="plant-card__options"><label class="plant-card__label"><input type="checkbox">
       My Plant
     </label>
-    <router-link-stub to="edit-plant/undefined">
-      <settingsicon-stub alt="Edit My Plant" class="plant-card__settings"></settingsicon-stub>
-    </router-link-stub>
+    <div class="plant-card__buttons">
+      <router-link-stub to="edit-plant/123">
+        <settingsicon-stub alt="Edit My Plant" class="plant-card__settings"></settingsicon-stub>
+      </router-link-stub> <button class="button--plain plant-card__delete">
+        <trashicon-stub></trashicon-stub> <span class="sr-only">Delete My Plant</span>
+      </button>
+    </div>
   </div>
   <div class="plant-card__watering-progress">
     <div class="plant-card__watering-progress-text">

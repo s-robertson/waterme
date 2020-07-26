@@ -1,9 +1,12 @@
 import MockDate from "mockdate";
 import moment from "moment";
+import Vuex from "vuex";
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import PlantCard from "@/components/PlantCard";
 
 const localVue = createLocalVue();
+
+localVue.use(Vuex);
 
 describe("PlantCard component", () => {
   beforeAll(() => {
@@ -14,20 +17,46 @@ describe("PlantCard component", () => {
     MockDate.reset();
   });
 
+  const mockPlant = {
+    id: "123",
+    name: "My Plant",
+    lastWatered: moment.utc("2020-07-25").unix(),
+    days: 10
+  };
+
+  const stubs = ["router-link"];
+
   it("Should render correctly", () => {
-    const mockPlant = {
-      name: "My Plant",
-      lastWatered: moment.utc("2020-07-25").unix(),
-      days: 10
-    };
     const wrapper = shallowMount(PlantCard, {
       propsData: {
         plant: mockPlant
       },
-      stubs: ["router-link"],
+      stubs,
       localVue
     });
     expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  it("Should delete plant", () => {
+    const actions = {
+      deletePlant: jest.fn()
+    };
+
+    const store = new Vuex.Store({
+      actions
+    });
+
+    const wrapper = shallowMount(PlantCard, {
+      propsData: {
+        plant: mockPlant
+      },
+      stubs,
+      localVue,
+      store
+    });
+
+    wrapper.find(".plant-card__delete").trigger("click");
+    expect(actions.deletePlant).toHaveBeenCalledWith(expect.any(Object), "123");
   });
 
   const dataset = [
@@ -44,7 +73,7 @@ describe("PlantCard component", () => {
   it.each(dataset)(
     `Should determine correct days remaining for %i days and %s as date`,
     (daysBetweenWatering, mockDate, expectedDaysRemaining) => {
-      const mockPlant = {
+      const plant = {
         name: "My Plant",
         lastWatered: moment.utc(mockDate).unix(),
         days: daysBetweenWatering
@@ -52,9 +81,9 @@ describe("PlantCard component", () => {
 
       const wrapper = shallowMount(PlantCard, {
         propsData: {
-          plant: mockPlant
+          plant
         },
-        stubs: ["router-link"],
+        stubs,
         localVue
       });
 

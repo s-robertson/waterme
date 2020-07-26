@@ -5,12 +5,21 @@
         <input :checked="isChecked" type="checkbox" @click="handleChange" />
         {{ plant.name }}
       </label>
-      <router-link :to="`edit-plant/${plant.id}`">
-        <SettingsIcon
-          class="plant-card__settings"
-          :alt="`Edit ${plant.name}`"
-        />
-      </router-link>
+      <div class="plant-card__buttons">
+        <router-link :to="`edit-plant/${plant.id}`">
+          <SettingsIcon
+            class="plant-card__settings"
+            :alt="`Edit ${plant.name}`"
+          />
+        </router-link>
+        <button
+          class="button--plain plant-card__delete"
+          @click.prevent="handleDeleteClick"
+        >
+          <TrashIcon />
+          <span class="sr-only">{{ `Delete ${plant.name}` }}</span>
+        </button>
+      </div>
     </div>
     <div class="plant-card__watering-progress">
       <div class="plant-card__watering-progress-text">
@@ -22,8 +31,10 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import moment from "moment";
 import SettingsIcon from "@/assets/settings.svg";
+import TrashIcon from "@/assets/trash.svg";
 
 export default {
   name: "PlantCard",
@@ -57,12 +68,17 @@ export default {
     }
   },
   methods: {
+    ...mapActions(["deletePlant"]),
+    handleDeleteClick() {
+      this.deletePlant(this.plant.id);
+    },
     handleChange(e) {
       this.$emit("toggle", e.target.checked);
     }
   },
   components: {
-    SettingsIcon
+    SettingsIcon,
+    TrashIcon
   }
 };
 </script>
@@ -74,13 +90,17 @@ export default {
   margin-bottom: 1rem;
 }
 
+.plant-card__buttons {
+  float: right;
+  display: flex;
+}
+
 .plant-card__settings {
   width: 25px;
   cursor: pointer;
   color: #00dcff;
   fill: $link-primary;
-  float: right;
-  vertical-align: middle;
+  margin-right: 0.5rem;
 }
 
 .plant-card__watering-progress {
@@ -94,6 +114,16 @@ export default {
   background: $brand-secondary;
   height: 2rem;
   border-radius: 10px;
+}
+
+.plant-card__delete {
+  width: 25px;
+  vertical-align: middle;
+  display: inline-block;
+
+  svg {
+    fill: $link-primary;
+  }
 }
 
 .plant-card__watering-progress-text {
