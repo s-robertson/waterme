@@ -70,8 +70,10 @@ export default {
         if (this.plant) {
           this.updatePlant({
             id: this.plant.id,
-            name: this.plantName,
-            days: this.days
+            data: {
+              name: this.plantName,
+              days: this.days
+            }
           });
         } else {
           this.addPlant({

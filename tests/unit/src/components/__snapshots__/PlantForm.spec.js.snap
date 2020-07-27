@@ -5,11 +5,11 @@ exports[`PlantForm component Should render correctly 1`] = `
   <div aria-live="assertive">
     <!---->
   </div>
-  <div><label>
+  <div><label for="name">
       Name:
-      <input type="text"></label></div>
-  <div><label>
+      <input id="name" type="text"></label></div>
+  <div><label for="days">
       Days between watering:
-      <input type="number"></label></div> <button type="submit">Add Plant</button>
+      <input id="days" type="number"></label></div> <button type="submit">Add Plant</button>
 </form>
 `;

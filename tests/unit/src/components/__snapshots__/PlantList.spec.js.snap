@@ -11,9 +11,9 @@ exports[`PlantForm component Should render correctly when plants have been added
       <plantcard-stub plant="[object Object]" class="plant-list__plant"></plantcard-stub> <button type="submit" class="plant-list__water-button">
         Water Selected Plants
       </button>
-      <router-link-stub to="/add-plant" class="button">Add a new plant</router-link-stub>
     </form>
   </div>
+  <router-link-stub to="/add-plant" class="plant-list__add-plant button">Add a new plant</router-link-stub>
 </div>
 `;
 
@@ -23,5 +23,6 @@ exports[`PlantForm component Should render correctly when plants have not been a
     You haven't added any plants yet!
   </p>
   <!---->
+  <router-link-stub to="/add-plant" class="plant-list__add-plant button">Add a new plant</router-link-stub>
 </div>
 `;

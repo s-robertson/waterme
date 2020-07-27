@@ -1,7 +1,27 @@
 import mutations from "@/store/mutations";
-import MockDate from "mockdate";
 
 describe("mutations", () => {
+  describe("appLoaded", () => {
+    it("should update state to indicate loading is done", () => {
+      const state = { loading: true };
+      mutations.appLoaded(state);
+      expect(state.loading).toBe(false);
+    });
+  });
+
+  describe("setPlants", () => {
+    it("should update plant list", () => {
+      const state = {
+        plants: []
+      };
+
+      const expectedPlants = [{ name: "My Plant" }];
+
+      mutations.setPlants(state, expectedPlants);
+      expect(state.plants).toEqual(expectedPlants);
+    });
+  });
+
   describe("addPlant", () => {
     it("should add new plant to state", () => {
       const state = { plants: [] };
@@ -40,28 +60,14 @@ describe("mutations", () => {
         plants: [updatedPlant, { id: "456", name: "My Plant 2", days: 7 }]
       };
 
-      mutations.updatePlant(state, updatedPlant);
+      mutations.updatePlant(state, {
+        id: "123",
+        data: {
+          name: "My Plant 1 Updated",
+          days: 2
+        }
+      });
       expect(state).toEqual(expectedState);
-    });
-  });
-
-  describe("waterPlant", () => {
-    it("should mark plant as watered", () => {
-      MockDate.set("2020-07-27");
-      const state = {
-        plants: [
-          { id: "123", name: "My Plant 1", days: 6, lastWatered: 1234567 }
-        ]
-      };
-      const expectedState = {
-        plants: [
-          { id: "123", name: "My Plant 1", days: 6, lastWatered: 1595808000 }
-        ]
-      };
-
-      mutations.waterPlant(state, "123");
-      expect(state).toEqual(expectedState);
-      MockDate.reset();
     });
   });
 });

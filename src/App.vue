@@ -1,12 +1,35 @@
 <template>
   <div id="app">
-    <AppHeader />
-    <div class="app__content">
-      <router-view />
+    <div v-if="loading" class="app_loader">
+      Loading...
     </div>
-    <AppFooter />
+    <div v-else class="app__container">
+      <AppHeader />
+      <div class="app__content">
+        <router-view />
+      </div>
+      <AppFooter />
+    </div>
   </div>
 </template>
+
+<script>
+import { mapState, mapActions } from "vuex";
+import AppHeader from "@/components/AppHeader";
+import AppFooter from "@/components/AppFooter";
+export default {
+  computed: {
+    ...mapState(["loading"])
+  },
+  methods: {
+    ...mapActions(["init"])
+  },
+  mounted() {
+    this.init();
+  },
+  components: { AppFooter, AppHeader }
+};
+</script>
 
 <style lang="scss">
 @import "./assets/variables";
@@ -23,11 +46,3 @@
   max-width: $app-max-width;
 }
 </style>
-
-<script>
-import AppHeader from "@/components/AppHeader";
-import AppFooter from "@/components/AppFooter";
-export default {
-  components: { AppFooter, AppHeader }
-};
-</script>

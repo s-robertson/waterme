@@ -1,25 +1,42 @@
-import { v4 as uuid } from "uuid";
+import repo from "@/store/storage/repository";
 
 export default {
-  addPlant({ commit }, plant) {
+  async init({ commit }) {
+    await repo.init();
+    const plants = await repo.fetchPlants();
+    commit("setPlants", plants);
+    commit("appLoaded");
+  },
+  async addPlant({ commit }, { name, days }) {
+    const plantData = {
+      name,
+      days,
+      lastWatered: 0
+    };
+
+    const newPlantId = repo.addPlant(plantData);
+
     commit("addPlant", {
-      ...{
-        name: plant.name,
-        days: plant.days
-      },
-      ...{
-        id: uuid(),
-        lastWatered: 0
-      }
+      ...{ id: newPlantId },
+      ...plantData
     });
   },
-  deletePlant({ commit }, id) {
+  async deletePlant({ commit }, id) {
+    repo.deletePlant(id);
     commit("deletePlant", id);
   },
-  updatePlant({ commit }, plantToUpdate) {
-    commit("updatePlant", plantToUpdate);
+  async updatePlant({ commit }, { id, data }) {
+    repo.updatePlant(id, data);
+    commit("updatePlant", { id, data });
   },
-  waterPlants({ commit }, plantIds) {
-    plantIds.forEach(id => commit("waterPlant", id));
+  async waterPlants({ commit }, plantIds) {
+    plantIds.forEach(id => {
+      const data = {
+        lastWatered: Math.round(Date.now() / 1000)
+      };
+
+      repo.updatePlant(id, data);
+      commit("updatePlant", { id, data });
+    });
   }
 };

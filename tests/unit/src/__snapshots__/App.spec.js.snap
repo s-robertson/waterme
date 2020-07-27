@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Component should display a loading message while the app is loading 1`] = `
+<div id="app">
+  <div class="app_loader">
+    Loading...
+  </div>
+</div>
+`;
+
+exports[`App Component should render correctly 1`] = `
+<div id="app">
+  <div class="app__container">
+    <appheader-stub></appheader-stub>
+    <div class="app__content">
+      <router-view-stub name="default"></router-view-stub>
+    </div>
+    <appfooter-stub></appfooter-stub>
+  </div>
+</div>
+`;
