@@ -11,15 +11,15 @@
       </div>
     </div>
     <div>
-      <label>
+      <label for="name">
         Name:
-        <input v-model="plantName" type="text" />
+        <input id="name" v-model="plantName" type="text" />
       </label>
     </div>
     <div>
-      <label>
+      <label for="days">
         Days between watering:
-        <input v-model="days" type="number" />
+        <input id="days" v-model="days" type="number" />
       </label>
     </div>
     <button type="submit">{{ submitLabel }}</button>
@@ -32,7 +32,6 @@ import { mapActions } from "vuex";
 export default {
   name: "PlantForm",
   data() {
-    console.log(this.plant, "PLANT");
     return {
       plantName: "",
       days: 0,

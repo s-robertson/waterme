@@ -17,7 +17,7 @@
         <button class="plant-list__water-button" type="submit">
           Water Selected Plants
         </button>
-        <router-link class="button" to="/add-plant"
+        <router-link class="plant-list__add-plant button" to="/add-plant"
           >Add a new plant</router-link
         >
       </form>
