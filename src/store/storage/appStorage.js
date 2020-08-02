@@ -1,6 +1,6 @@
 import firebaseApp from "./firebase";
 
-class AppRepository {
+class AppStorage {
   constructor(firebaseApp) {
     this.app = firebaseApp;
     this.db = this.app.firestore();
@@ -46,4 +46,4 @@ class AppRepository {
   }
 }
 
-export default new AppRepository(firebaseApp);
+export default new AppStorage(firebaseApp);

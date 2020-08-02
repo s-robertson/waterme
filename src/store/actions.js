@@ -1,9 +1,9 @@
-import repo from "@/store/storage/repository";
+import storage from "@/store/storage/appStorage";
 
 export default {
   async init({ commit }) {
-    await repo.init();
-    const plants = await repo.fetchPlants();
+    await storage.init();
+    const plants = await storage.fetchPlants();
     commit("setPlants", plants);
     commit("appLoaded");
   },
@@ -14,7 +14,7 @@ export default {
       lastWatered: 0
     };
 
-    const newPlantId = repo.addPlant(plantData);
+    const newPlantId = storage.addPlant(plantData);
 
     commit("addPlant", {
       ...{ id: newPlantId },
@@ -22,11 +22,11 @@ export default {
     });
   },
   async deletePlant({ commit }, id) {
-    repo.deletePlant(id);
+    storage.deletePlant(id);
     commit("deletePlant", id);
   },
   async updatePlant({ commit }, { id, data }) {
-    repo.updatePlant(id, data);
+    storage.updatePlant(id, data);
     commit("updatePlant", { id, data });
   },
   async waterPlants({ commit }, plantIds) {
@@ -35,7 +35,7 @@ export default {
         lastWatered: Math.round(Date.now() / 1000)
       };
 
-      repo.updatePlant(id, data);
+      storage.updatePlant(id, data);
       commit("updatePlant", { id, data });
     });
   }

@@ -1,5 +1,5 @@
 import actions from "@/store/actions";
-import repo from "@/store/storage/repository";
+import storage from "@/store/storage/appStorage";
 
 jest.mock("@/store/storage/repository", () => ({
   init: jest.fn(),
@@ -19,11 +19,11 @@ describe("vuex actions", () => {
       const state = {};
       const expectedPlants = [{ name: "My Plant" }];
 
-      repo.fetchPlants.mockImplementation(() => expectedPlants);
+      storage.fetchPlants.mockImplementation(() => expectedPlants);
       await actions.init({ commit, state });
 
-      expect(repo.init).toHaveBeenCalled();
-      expect(repo.fetchPlants).toHaveBeenCalled();
+      expect(storage.init).toHaveBeenCalled();
+      expect(storage.fetchPlants).toHaveBeenCalled();
       expect(commit.mock.calls).toEqual([
         ["setPlants", expectedPlants],
         ["appLoaded"]
@@ -40,14 +40,14 @@ describe("vuex actions", () => {
         lastWatered: 0
       };
 
-      repo.addPlant.mockImplementation(() => expectedPlant.id);
+      storage.addPlant.mockImplementation(() => expectedPlant.id);
 
       await actions.addPlant(
         { commit },
         { name: expectedPlant.name, days: expectedPlant.days }
       );
 
-      expect(repo.addPlant).toHaveBeenCalledWith({
+      expect(storage.addPlant).toHaveBeenCalledWith({
         name: expectedPlant.name,
         days: expectedPlant.days,
         lastWatered: expectedPlant.lastWatered
@@ -62,7 +62,7 @@ describe("vuex actions", () => {
       const expectedId = "123";
       await actions.deletePlant({ commit }, expectedId);
 
-      expect(repo.deletePlant).toHaveBeenCalledWith(expectedId);
+      expect(storage.deletePlant).toHaveBeenCalledWith(expectedId);
       expect(commit.mock.calls).toEqual([["deletePlant", expectedId]]);
     });
   });
@@ -83,7 +83,10 @@ describe("vuex actions", () => {
         }
       );
 
-      expect(repo.updatePlant).toHaveBeenCalledWith(expectedId, expectedData);
+      expect(storage.updatePlant).toHaveBeenCalledWith(
+        expectedId,
+        expectedData
+      );
       expect(commit.mock.calls).toEqual([
         ["updatePlant", { id: expectedId, data: expectedData }]
       ]);
@@ -101,7 +104,7 @@ describe("vuex actions", () => {
       };
 
       await actions.waterPlants({ commit }, expectedIds);
-      expect(repo.updatePlant.mock.calls).toEqual([
+      expect(storage.updatePlant.mock.calls).toEqual([
         [expectedIds[0], expectedData],
         [expectedIds[1], expectedData]
       ]);
