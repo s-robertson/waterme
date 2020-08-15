@@ -1,5 +1,8 @@
 export default {
   sortedPlants(state) {
+    if (state.plants === null) {
+      return null;
+    }
     return state.plants.sort((a, b) =>
       a.lastWatered > b.lastWatered ? 1 : -1
     );

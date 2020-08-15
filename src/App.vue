@@ -14,18 +14,12 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState } from "vuex";
 import AppHeader from "@/components/AppHeader";
 import AppFooter from "@/components/AppFooter";
 export default {
   computed: {
     ...mapState(["loading"])
-  },
-  methods: {
-    ...mapActions(["init"])
-  },
-  mounted() {
-    this.init();
   },
   components: { AppFooter, AppHeader }
 };
@@ -42,7 +36,7 @@ export default {
 
 .app__content {
   margin: 2rem auto 0 auto;
-  padding-bottom: 4rem;
+  padding: 0 1.5rem 4rem;
   max-width: $app-max-width;
 }
 </style>

@@ -3,35 +3,44 @@
     <p v-if="!hasPlants">
       You haven't added any plants yet!
     </p>
-    <div v-if="hasPlants">
-      <p>Select plants to water:</p>
+    <div>
       <form action="" @submit.prevent="handleSubmit">
-        <PlantCard
-          v-for="plant in sortedPlants"
-          :key="plant.id"
-          :is-checked="isChecked(plant.id)"
-          @toggle="toggled => handlePlantToggle(toggled, plant.id)"
-          :plant="plant"
-          class="plant-list__plant"
-        />
-        <button class="plant-list__water-button" type="submit">
-          Water Selected Plants
-        </button>
+        <template v-if="hasPlants">
+          <p>Select plants to water:</p>
+          <PlantCard
+            v-for="plant in sortedPlants"
+            :key="plant.id"
+            :is-checked="isChecked(plant.id)"
+            @toggle="toggled => handlePlantToggle(toggled, plant.id)"
+            :plant="plant"
+            class="plant-list__plant"
+          />
+        </template>
+        <OptionButtons>
+          <button
+            v-if="hasPlants"
+            class="plant-list__water-button"
+            type="submit"
+          >
+            Water Selected Plants
+          </button>
+          <router-link class="plant-list__add-plant button" to="/add-plant"
+            >Add a new plant</router-link
+          >
+        </OptionButtons>
       </form>
     </div>
-    <router-link class="plant-list__add-plant button" to="/add-plant"
-      >Add a new plant</router-link
-    >
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
 import PlantCard from "@/components/PlantCard";
+import OptionButtons from "@/components/OptionButtons";
 
 export default {
   name: "PlantList",
-  components: { PlantCard },
+  components: { OptionButtons, PlantCard },
   data() {
     return {
       plantsToWater: []
@@ -40,11 +49,14 @@ export default {
   computed: {
     ...mapGetters(["sortedPlants"]),
     hasPlants() {
-      return this.sortedPlants.length > 0;
+      return this.plantsFetched && this.sortedPlants.length > 0;
+    },
+    plantsFetched() {
+      return this.sortedPlants !== null;
     }
   },
   methods: {
-    ...mapActions(["waterPlants"]),
+    ...mapActions(["waterPlants", "fetchPlants"]),
     isChecked(plantId) {
       return this.plantsToWater.findIndex(item => item === plantId) !== -1;
     },

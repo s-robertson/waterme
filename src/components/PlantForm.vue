@@ -11,26 +11,33 @@
       </div>
     </div>
     <div>
-      <label for="name">
+      <label>
         Name:
-        <input id="name" v-model="plantName" type="text" />
+        <input v-model="plantName" type="text" autocomplete="off" />
       </label>
     </div>
     <div>
-      <label for="days">
+      <label>
         Days between watering:
-        <input id="days" v-model="days" type="number" />
+        <input v-model="days" type="number" autocomplete="off" />
       </label>
     </div>
-    <button type="submit">{{ submitLabel }}</button>
+    <OptionButtons>
+      <button type="submit">{{ submitLabel }}</button>
+      <router-link to="/">
+        Cancel
+      </router-link>
+    </OptionButtons>
   </form>
 </template>
 
 <script>
 import { mapActions } from "vuex";
+import OptionButtons from "@/components/OptionButtons";
 
 export default {
   name: "PlantForm",
+  components: { OptionButtons },
   data() {
     return {
       plantName: "",

@@ -1,11 +1,32 @@
 import storage from "@/store/storage/appStorage";
+import appAuth from "@/store/services/auth";
 
 export default {
-  async init({ commit }) {
-    await storage.init();
+  async login({ commit }, { email, password }) {
+    try {
+      await appAuth.login(email, password);
+      commit("authenticated");
+      return true;
+    } catch (err) {
+      commit("setLoginErrors", err.messages);
+      return false;
+    }
+  },
+  async logout({ commit }) {
+    appAuth.logout();
+    commit("authenticated", false);
+  },
+  async register({ commit }, { email, password }) {
+    try {
+      await appAuth.register(email, password);
+      commit("registered");
+    } catch (err) {
+      commit("setRegistrationErrors", err.messages);
+    }
+  },
+  async fetchPlants({ commit }) {
     const plants = await storage.fetchPlants();
     commit("setPlants", plants);
-    commit("appLoaded");
   },
   async addPlant({ commit }, { name, days }) {
     const plantData = {

@@ -34,6 +34,7 @@ export default {
 .app-footer__content {
   margin: 0 auto;
   max-width: $app-max-width;
+  padding: 0 1.5rem;
 }
 
 .app-footer__oss-attributes {

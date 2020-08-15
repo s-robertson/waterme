@@ -1,4 +1,13 @@
 export default {
+  setCurrentUserId(state, uid) {
+    state.currentUserId = uid;
+  },
+  authenticated(state, authenticated = true) {
+    state.authenticated = authenticated;
+  },
+  setLoginErrors(state, errors) {
+    state.loginErrors = errors;
+  },
   appLoaded(state) {
     state.loading = false;
   },
@@ -23,5 +32,11 @@ export default {
         ...data
       };
     });
+  },
+  registered(state) {
+    state.registered = true;
+  },
+  setRegistrationErrors(state, errors) {
+    state.registrationErrors = errors;
   }
 };

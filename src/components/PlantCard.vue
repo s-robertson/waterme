@@ -1,8 +1,13 @@
 <template>
   <div class="plant-card">
     <div class="plant-card__options">
-      <label class="plant-card__label">
-        <input :checked="isChecked" type="checkbox" @click="handleChange" />
+      <input
+        :id="checkboxId"
+        :checked="isChecked"
+        type="checkbox"
+        @click="handleChange"
+      />
+      <label class="plant-card__label" :for="checkboxId">
         {{ plant.name }}
       </label>
       <div class="plant-card__buttons">
@@ -43,6 +48,9 @@ export default {
     isChecked: Boolean
   },
   computed: {
+    checkboxId() {
+      return `water-plant-${this.plant.id}`;
+    },
     daysRemaining() {
       const daysBetweenWatering = this.plant.days;
       const lastWatered = moment

@@ -1,20 +1,20 @@
 import firebaseApp from "./firebase";
+import appAuth from "@/store/services/auth";
 
 class AppStorage {
   constructor(firebaseApp) {
     this.app = firebaseApp;
     this.db = this.app.firestore();
-    this.initialized = false;
-  }
-
-  async init() {
-    await this.app.auth().signInAnonymously();
-    this.initialized = true;
   }
 
   addPlant(plantData) {
     const doc = this.db.collection("plants").doc();
-    doc.set(plantData);
+    doc.set({
+      ...plantData,
+      ...{
+        uid: this.app.auth().currentUser.uid
+      }
+    });
     return doc.id;
   }
 
@@ -33,7 +33,14 @@ class AppStorage {
   }
 
   async fetchPlants() {
-    const snapshot = await this.db.collection("plants").get();
+    if (!appAuth.isLoggedIn()) {
+      return [];
+    }
+
+    const snapshot = await this.db
+      .collection("plants")
+      .where("uid", "==", this.app.auth().currentUser.uid)
+      .get();
     const plants = [];
     snapshot.forEach(doc => {
       plants.push({
