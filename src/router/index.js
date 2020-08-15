@@ -59,10 +59,6 @@ router.beforeEach((to, from, next) => {
     return;
   }
 
-  if (to.name === "Register" && appAuth.isLoggedIn) {
-    next({ name: "Home " });
-  }
-
   next();
 });
 

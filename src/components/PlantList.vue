@@ -1,6 +1,6 @@
 <template>
   <div class="plant-list">
-    <p v-if="!hasPlants">
+    <p v-if="plantsFetched && !hasPlants">
       You haven't added any plants yet!
     </p>
     <div>

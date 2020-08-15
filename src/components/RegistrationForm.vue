@@ -44,6 +44,7 @@ export default {
     async handleSubmit() {
       try {
         await this.register({ email: this.email, password: this.password });
+        this.$router.push("/");
       } catch (err) {
         this.errorMessage = err;
       }
