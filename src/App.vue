@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div v-if="loading" class="app_loader">
+    <div v-if="loading" class="app__loader">
       Loading...
     </div>
     <div v-else class="app__container">
@@ -32,6 +32,11 @@ export default {
 #app {
   min-height: 100%;
   position: relative;
+}
+
+.app__loader {
+  padding: 4rem 0 0 0;
+  text-align: center;
 }
 
 .app__content {
