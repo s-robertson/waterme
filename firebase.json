@@ -9,6 +9,10 @@
     }
   },
   "hosting" : {
-    "public": "dist"
+    "public": "dist",
+    "rewrites": [{
+      "source": "**",
+      "destination": "/index.html"
+    }]
   }
 }
