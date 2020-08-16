@@ -1,11 +1,53 @@
 import mutations from "@/store/mutations";
 
 describe("mutations", () => {
+  describe("authenticated", () => {
+    const dataset = [
+      [true, []],
+      [false, [false]]
+    ];
+
+    it.each(dataset)(
+      "should set authenticated status to %p with args %p",
+      (expected, args) => {
+        const state = { authenticated: null };
+        mutations.authenticated(state, ...args);
+        expect(state.authenticated).toBe(expected);
+      }
+    );
+  });
+
+  describe("setLoginErrors", () => {
+    it("should set login errors", () => {
+      const expectedErrors = ["Error One", "Error Two"];
+      const state = { loginErrors: [] };
+      mutations.setLoginErrors(state, expectedErrors);
+      expect(state.loginErrors).toEqual(expectedErrors);
+    });
+  });
+
+  describe("setRegistrationErrors", () => {
+    it("should set registration errors", () => {
+      const expectedErrors = ["Error One", "Error Two"];
+      const state = { registrationErrors: [] };
+      mutations.setRegistrationErrors(state, expectedErrors);
+      expect(state.registrationErrors).toEqual(expectedErrors);
+    });
+  });
+
   describe("appLoaded", () => {
     it("should update state to indicate loading is done", () => {
       const state = { loading: true };
       mutations.appLoaded(state);
       expect(state.loading).toBe(false);
+    });
+  });
+
+  describe("registered", () => {
+    it("should update state to indicate the user has registered", () => {
+      const state = { registered: false };
+      mutations.registered(state);
+      expect(state.registered).toBe(true);
     });
   });
 

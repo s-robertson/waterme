@@ -1,7 +1,4 @@
 export default {
-  setCurrentUserId(state, uid) {
-    state.currentUserId = uid;
-  },
   authenticated(state, authenticated = true) {
     state.authenticated = authenticated;
   },

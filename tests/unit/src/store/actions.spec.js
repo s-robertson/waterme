@@ -1,30 +1,90 @@
 import actions from "@/store/actions";
-import storage from "@/services/appStorage";
+import appStorage from "@/services/appStorage";
+import auth from "@/services/auth";
 
-jest.mock("@/store/storage/repository", () => ({
-  init: jest.fn(),
+jest.mock("@/services/appStorage", () => ({
   fetchPlants: jest.fn(),
   addPlant: jest.fn(),
   deletePlant: jest.fn(),
   updatePlant: jest.fn()
 }));
 
+jest.mock("@/services/auth", () => ({
+  logout: jest.fn(),
+  login: jest.fn(),
+  register: jest.fn()
+}));
+
 describe("vuex actions", () => {
   const commit = jest.fn();
 
-  describe("init", () => {
-    it("should commit all expected mutations", async () => {
-      const state = {};
-      const expectedPlants = [{ name: "My Plant" }];
+  describe("login", () => {
+    it("should commit correct mutations when successfully logging in", async () => {
+      const expectedEmail = "test@user.com";
+      const expectedPassword = "password123";
 
-      storage.fetchPlants.mockImplementation(() => expectedPlants);
-      await actions.init({ commit, state });
+      auth.login.mockImplementation(async () => true);
+      await actions.login(
+        { commit },
+        { email: expectedEmail, password: expectedPassword }
+      );
 
-      expect(storage.init).toHaveBeenCalled();
-      expect(storage.fetchPlants).toHaveBeenCalled();
+      expect(auth.login).toHaveBeenCalledWith(expectedEmail, expectedPassword);
+      expect(commit.mock.calls).toEqual([["authenticated"]]);
+    });
+
+    it("should commit correct mutations when there are authentication errors", async () => {
+      const expectedErrors = ["Error One", "Error Two"];
+
+      auth.login.mockImplementation(async () => {
+        throw {
+          messages: expectedErrors
+        };
+      });
+      await actions.login({ commit }, { email: "", password: "" });
+
+      expect(commit.mock.calls).toEqual([["setLoginErrors", expectedErrors]]);
+    });
+  });
+
+  describe("logout", () => {
+    it("should commit expected mutations", async () => {
+      await actions.logout({ commit });
+      expect(auth.logout).toHaveBeenCalled();
+      expect(commit.mock.calls).toEqual([["authenticated", false]]);
+    });
+  });
+
+  describe("register", () => {
+    it("should commit correct mutations when successfully registering", async () => {
+      const expectedEmail = "test@user.com";
+      const expectedPassword = "password123";
+
+      auth.login.mockImplementation(async () => true);
+      await actions.register(
+        { commit },
+        { email: expectedEmail, password: expectedPassword }
+      );
+
+      expect(auth.register).toHaveBeenCalledWith(
+        expectedEmail,
+        expectedPassword
+      );
+      expect(commit.mock.calls).toEqual([["registered"]]);
+    });
+
+    it("should commit correct mutations when there are registration errors", async () => {
+      const expectedErrors = ["Error One", "Error Two"];
+
+      auth.register.mockImplementation(async () => {
+        throw {
+          messages: expectedErrors
+        };
+      });
+      await actions.register({ commit }, { email: "", password: "" });
+
       expect(commit.mock.calls).toEqual([
-        ["setPlants", expectedPlants],
-        ["appLoaded"]
+        ["setRegistrationErrors", expectedErrors]
       ]);
     });
   });
@@ -38,14 +98,14 @@ describe("vuex actions", () => {
         lastWatered: 0
       };
 
-      storage.addPlant.mockImplementation(() => expectedPlant.id);
+      appStorage.addPlant.mockImplementation(() => expectedPlant.id);
 
       await actions.addPlant(
         { commit },
         { name: expectedPlant.name, days: expectedPlant.days }
       );
 
-      expect(storage.addPlant).toHaveBeenCalledWith({
+      expect(appStorage.addPlant).toHaveBeenCalledWith({
         name: expectedPlant.name,
         days: expectedPlant.days,
         lastWatered: expectedPlant.lastWatered
@@ -60,7 +120,7 @@ describe("vuex actions", () => {
       const expectedId = "123";
       await actions.deletePlant({ commit }, expectedId);
 
-      expect(storage.deletePlant).toHaveBeenCalledWith(expectedId);
+      expect(appStorage.deletePlant).toHaveBeenCalledWith(expectedId);
       expect(commit.mock.calls).toEqual([["deletePlant", expectedId]]);
     });
   });
@@ -81,7 +141,7 @@ describe("vuex actions", () => {
         }
       );
 
-      expect(storage.updatePlant).toHaveBeenCalledWith(
+      expect(appStorage.updatePlant).toHaveBeenCalledWith(
         expectedId,
         expectedData
       );
@@ -92,17 +152,17 @@ describe("vuex actions", () => {
   });
 
   describe("waterPlants", () => {
-    const mockTimestamp = 123456789000;
-    Date.now = jest.fn(() => mockTimestamp);
-
     it("should commit correct mutations", async () => {
+      const mockTimestamp = 123456789000;
+      Date.now = jest.fn(() => mockTimestamp);
+
       const expectedIds = ["123", "456"];
       const expectedData = {
         lastWatered: 123456789
       };
 
       await actions.waterPlants({ commit }, expectedIds);
-      expect(storage.updatePlant.mock.calls).toEqual([
+      expect(appStorage.updatePlant.mock.calls).toEqual([
         [expectedIds[0], expectedData],
         [expectedIds[1], expectedData]
       ]);
