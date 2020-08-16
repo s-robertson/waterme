@@ -8,7 +8,7 @@ exports[`LoginForm component Should render any login errors 1`] = `
         <input type="text" data-test="input-login-email"></label></div>
     <div class="c-form-item"><label>Password:
         <input type="text" data-test="input-login-password"></label></div>
-    <optionbuttons-stub><button type="submit">Login</button>
+    <optionbuttons-stub><button type="submit" data-test="input-login-submit">Login</button>
       <router-link-stub to="/register" class="button">Register for a New Account</router-link-stub>
     </optionbuttons-stub>
   </form>
@@ -23,7 +23,7 @@ exports[`LoginForm component Should render correctly 1`] = `
         <input type="text" data-test="input-login-email"></label></div>
     <div class="c-form-item"><label>Password:
         <input type="text" data-test="input-login-password"></label></div>
-    <optionbuttons-stub><button type="submit">Login</button>
+    <optionbuttons-stub><button type="submit" data-test="input-login-submit">Login</button>
       <router-link-stub to="/register" class="button">Register for a New Account</router-link-stub>
     </optionbuttons-stub>
   </form>

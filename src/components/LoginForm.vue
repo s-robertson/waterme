@@ -15,7 +15,7 @@
         /></label>
       </div>
       <OptionButtons>
-        <button type="submit">Login</button>
+        <button type="submit" data-test="input-login-submit">Login</button>
         <router-link to="/register" class="button"
           >Register for a New Account</router-link
         >
