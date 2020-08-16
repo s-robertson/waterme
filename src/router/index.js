@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import appAuth from "@/store/services/auth";
+import appAuth from "@/services/auth";
 import store from "@/store";
 
 Vue.use(VueRouter);

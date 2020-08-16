@@ -1,5 +1,5 @@
-import storage from "@/store/storage/appStorage";
-import appAuth from "@/store/services/auth";
+import storage from "@/services/appStorage";
+import appAuth from "@/services/auth";
 
 export default {
   async login({ commit }, { email, password }) {

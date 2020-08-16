@@ -1,4 +1,4 @@
-import firebaseApp from "@/store/storage/firebase";
+import firebaseApp from "@/services/firebase";
 import router from "@/router";
 
 export default store => {

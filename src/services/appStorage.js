@@ -1,5 +1,5 @@
 import firebaseApp from "./firebase";
-import appAuth from "@/store/services/auth";
+import appAuth from "@/services/auth";
 
 class AppStorage {
   constructor(firebaseApp) {

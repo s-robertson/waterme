@@ -1,4 +1,4 @@
-import firebaseApp from "@/store/storage/firebase";
+import firebaseApp from "@/services/firebase";
 
 class AppAuth {
   constructor(firebase) {

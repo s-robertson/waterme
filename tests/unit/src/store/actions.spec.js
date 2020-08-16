@@ -1,5 +1,5 @@
 import actions from "@/store/actions";
-import storage from "@/store/storage/appStorage";
+import storage from "@/services/appStorage";
 
 jest.mock("@/store/storage/repository", () => ({
   init: jest.fn(),
