@@ -1,6 +1,6 @@
 <template>
   <div class="c-plant-list">
-    <p v-if="plantsFetched && !hasPlants">
+    <p v-if="plantsFetched && !hasPlants" data-test="feedback-no-plants">
       You haven't added any plants yet!
     </p>
     <div>
@@ -21,10 +21,14 @@
             v-if="hasPlants"
             class="c-plant-list__water-button"
             type="submit"
+            data-test="button-water-plants-submit"
           >
             Water Selected Plants
           </button>
-          <router-link class="c-plant-list__add-plant button" to="/add-plant"
+          <router-link
+            class="c-plant-list__add-plant button"
+            to="/add-plant"
+            data-test="button-add-new-plant"
             >Add a new plant</router-link
           >
         </OptionButtons>

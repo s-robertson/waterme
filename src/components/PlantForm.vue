@@ -4,17 +4,29 @@
     <div class="c-form-item">
       <label>
         Name:
-        <input v-model="plantName" type="text" autocomplete="off" />
+        <input
+          v-model="plantName"
+          type="text"
+          autocomplete="off"
+          data-test="input-plant-name"
+        />
       </label>
     </div>
     <div class="c-form-item">
       <label>
         Days between watering:
-        <input v-model="days" type="number" autocomplete="off" />
+        <input
+          v-model="days"
+          type="number"
+          autocomplete="off"
+          data-test="input-plant-days"
+        />
       </label>
     </div>
     <OptionButtons>
-      <button type="submit">{{ submitLabel }}</button>
+      <button type="submit" data-test="button-add-plant-submit">
+        {{ submitLabel }}
+      </button>
       <router-link to="/">
         Cancel
       </router-link>

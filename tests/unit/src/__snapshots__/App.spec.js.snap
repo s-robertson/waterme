@@ -2,7 +2,7 @@
 
 exports[`App Component should display a loading message while the app is loading 1`] = `
 <div id="app">
-  <div class="app_loader">
+  <div class="app__loader">
     Loading...
   </div>
 </div>

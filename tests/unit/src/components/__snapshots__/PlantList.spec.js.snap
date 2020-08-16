@@ -1,28 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PlantForm component Should render correctly when plants have been added 1`] = `
-<div class="plant-list">
+<div class="c-plant-list">
   <!---->
   <div>
-    <p>Select plants to water:</p>
     <form action="">
-      <plantcard-stub plant="[object Object]" class="plant-list__plant"></plantcard-stub>
-      <plantcard-stub plant="[object Object]" class="plant-list__plant"></plantcard-stub>
-      <plantcard-stub plant="[object Object]" class="plant-list__plant"></plantcard-stub> <button type="submit" class="plant-list__water-button">
-        Water Selected Plants
-      </button>
+      <p>Select plants to water:</p>
+      <plantcard-stub plant="[object Object]" class="c-plant-list__plant"></plantcard-stub>
+      <plantcard-stub plant="[object Object]" class="c-plant-list__plant"></plantcard-stub>
+      <plantcard-stub plant="[object Object]" class="c-plant-list__plant"></plantcard-stub>
+      <optionbuttons-stub><button type="submit" data-test="button-water-plants-submit" class="c-plant-list__water-button">
+          Water Selected Plants
+        </button>
+        <router-link-stub to="/add-plant" data-test="button-add-new-plant" class="c-plant-list__add-plant button">Add a new plant</router-link-stub>
+      </optionbuttons-stub>
     </form>
   </div>
-  <router-link-stub to="/add-plant" class="plant-list__add-plant button">Add a new plant</router-link-stub>
 </div>
 `;
 
 exports[`PlantForm component Should render correctly when plants have not been added 1`] = `
-<div class="plant-list">
-  <p>
+<div class="c-plant-list">
+  <p data-test="feedback-no-plants">
     You haven't added any plants yet!
   </p>
-  <!---->
-  <router-link-stub to="/add-plant" class="plant-list__add-plant button">Add a new plant</router-link-stub>
+  <div>
+    <form action="">
+      <!---->
+      <optionbuttons-stub>
+        <!---->
+        <router-link-stub to="/add-plant" data-test="button-add-new-plant" class="c-plant-list__add-plant button">Add a new plant</router-link-stub>
+      </optionbuttons-stub>
+    </form>
+  </div>
 </div>
 `;

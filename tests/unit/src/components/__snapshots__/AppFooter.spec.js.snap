@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AppFooter component Should render correctly 1`] = `
-<div class="app-footer">
-  <div class="app-footer__content">
-    <div class="app-footer__oss-attributes">
+<div class="c-app-footer">
+  <div class="c-app-footer__content">
+    <div class="c-app-footer__oss-attributes">
       Icons made by
       <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>
       from

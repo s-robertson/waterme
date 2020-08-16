@@ -1,23 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PlantCard component Should render correctly 1`] = `
-<div class="plant-card">
-  <div class="plant-card__options"><label class="plant-card__label"><input type="checkbox">
+<div data-test="plant-card" class="c-plant-card">
+  <div class="c-plant-card__options"><input id="water-plant-123" type="checkbox" data-test="checkbox-water-plant"> <label for="water-plant-123" class="c-plant-card__label">
       My Plant
     </label>
-    <div class="plant-card__buttons">
-      <router-link-stub to="edit-plant/123">
-        <settingsicon-stub alt="Edit My Plant" class="plant-card__settings"></settingsicon-stub>
-      </router-link-stub> <button class="button--plain plant-card__delete">
+    <div class="c-plant-card__buttons">
+      <router-link-stub to="edit-plant/123" class="button--icon">
+        <settingsicon-stub alt="Edit My Plant" class="c-plant-card__settings"></settingsicon-stub>
+      </router-link-stub> <button data-test="button-delete-plant" class="button--icon plant-card__delete">
         <trashicon-stub></trashicon-stub> <span class="sr-only">Delete My Plant</span>
       </button>
     </div>
   </div>
-  <div class="plant-card__watering-progress">
-    <div class="plant-card__watering-progress-text">
+  <div class="c-plant-card__watering-progress">
+    <div class="c-plant-card__watering-progress-text">
       5 Days Remaining
     </div>
-    <div class="plant-card__watering-progress-fill" style="width: 50%;"></div>
+    <div class="c-plant-card__watering-progress-fill" style="width: 50%;"></div>
   </div>
 </div>
 `;

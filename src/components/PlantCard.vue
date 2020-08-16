@@ -1,11 +1,12 @@
 <template>
-  <div class="c-plant-card">
+  <div class="c-plant-card" data-test="plant-card">
     <div class="c-plant-card__options">
       <input
         :id="checkboxId"
         :checked="isChecked"
         type="checkbox"
         @click="handleChange"
+        data-test="checkbox-water-plant"
       />
       <label class="c-plant-card__label" :for="checkboxId">
         {{ plant.name }}
@@ -20,6 +21,7 @@
         <button
           class="button--icon plant-card__delete"
           @click.prevent="handleDeleteClick"
+          data-test="button-delete-plant"
         >
           <TrashIcon />
           <span class="sr-only">{{ `Delete ${plant.name}` }}</span>
