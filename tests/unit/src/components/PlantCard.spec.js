@@ -1,5 +1,4 @@
 import MockDate from "mockdate";
-import moment from "moment";
 import Vuex from "vuex";
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import PlantCard from "@/components/PlantCard";
@@ -20,7 +19,7 @@ describe("PlantCard component", () => {
   const mockPlant = {
     id: "123",
     name: "My Plant",
-    lastWatered: moment.utc("2020-07-25").unix(),
+    lastWatered: Math.round(Date.UTC(2020, 6, 25) / 1000),
     days: 10
   };
 
@@ -60,22 +59,22 @@ describe("PlantCard component", () => {
   });
 
   const dataset = [
-    [7, "2020-07-23", 0],
-    [7, "2020-06-20", 0],
-    [10, "2020-07-25", 5],
-    [10, "2020-08-15", 10],
-    [8, "2020-07-30", 8],
-    [8, "2020-07-29", 7],
-    [1, "2020-07-29", 0],
-    [1, "2020-07-30", 1]
+    [7, [2020, 6, 23], 0],
+    [7, [2020, 5, 20], 0],
+    [10, [2020, 6, 25], 5],
+    [10, [2020, 7, 15], 10],
+    [8, [2020, 6, 30], 8],
+    [8, [2020, 6, 29], 7],
+    [1, [2020, 6, 29], 0],
+    [1, [2020, 6, 30], 1]
   ];
 
   it.each(dataset)(
-    `Should determine correct days remaining for %i days and %s as date`,
+    `Should determine correct days remaining for %i days and %p as date`,
     (daysBetweenWatering, mockDate, expectedDaysRemaining) => {
       const plant = {
         name: "My Plant",
-        lastWatered: moment.utc(mockDate).unix(),
+        lastWatered: Math.round(Date.UTC(...mockDate) / 1000),
         days: daysBetweenWatering
       };
 

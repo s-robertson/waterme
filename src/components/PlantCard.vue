@@ -42,7 +42,6 @@
 
 <script>
 import { mapActions } from "vuex";
-import moment from "moment";
 import SettingsIcon from "@/assets/settings.svg";
 import TrashIcon from "@/assets/trash.svg";
 
@@ -57,12 +56,20 @@ export default {
       return `water-plant-${this.plant.id}`;
     },
     daysRemaining() {
+      const resetDateTime = date => {
+        date.setHours(0);
+        date.setSeconds(0);
+        date.setMinutes(0);
+      };
+
       const daysBetweenWatering = this.plant.days;
-      const lastWatered = moment
-        .unix(this.plant.lastWatered)
-        .set({ second: 0, minute: 0, hour: 0 });
-      const now = moment().set({ second: 0, minute: 0, hour: 0 });
-      const daysSinceLastWatered = now.diff(lastWatered, "days");
+      const lastWatered = new Date(this.plant.lastWatered * 1000);
+      resetDateTime(lastWatered);
+
+      const now = new Date(Date.now());
+      resetDateTime(now);
+
+      const daysSinceLastWatered = Math.round((now - lastWatered) / 86400000);
       const daysRemaining = daysBetweenWatering - daysSinceLastWatered;
 
       if (daysRemaining > daysBetweenWatering) {
