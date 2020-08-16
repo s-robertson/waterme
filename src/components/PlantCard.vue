@@ -92,7 +92,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/variables";
+@import "../assets/scss/variables";
 
 .plant-card__options {
   margin-bottom: 1rem;

@@ -10,13 +10,13 @@
         </ul>
       </div>
     </div>
-    <div>
+    <div class="c-form-item">
       <label>
         Name:
         <input v-model="plantName" type="text" autocomplete="off" />
       </label>
     </div>
-    <div>
+    <div class="c-form-item">
       <label>
         Days between watering:
         <input v-model="days" type="number" autocomplete="off" />

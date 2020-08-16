@@ -26,8 +26,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./assets/variables";
-@import "./assets/app.scss";
+@import "assets/scss/variables";
+@import "assets/scss/app";
 
 #app {
   min-height: 100%;

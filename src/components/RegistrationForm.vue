@@ -5,13 +5,13 @@
       {{ errorMessage }}
     </div>
     <form @submit.prevent="handleSubmit">
-      <div>
+      <div class="c-form-item">
         <label for="email">
           Email address:
           <input v-model="email" id="email" type="text" />
         </label>
       </div>
-      <div>
+      <div class="c-form-item">
         <label for="password">
           Password:
           <input v-model="password" id="password" type="password" />

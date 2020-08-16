@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/variables";
+@import "../assets/scss/variables";
 
 .app-header {
   background: $brand-secondary;

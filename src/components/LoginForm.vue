@@ -2,12 +2,12 @@
   <div class="login-form">
     <ErrorList :errors="loginErrors" />
     <form action="" @submit.prevent="handleSubmit">
-      <div>
+      <div class="c-form-item">
         <label for="email"
           >Email: <input v-model="email" id="email" type="text"
         /></label>
       </div>
-      <div>
+      <div class="c-form-item">
         <label for="password"
           >Password: <input v-model="password" id="password" type="password"
         /></label>

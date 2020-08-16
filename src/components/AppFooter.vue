@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/variables";
+@import "../assets/scss/variables";
 
 .app-footer {
   position: absolute;

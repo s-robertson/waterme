@@ -1,4 +1,4 @@
-@import './variables';
+@import 'variables';
 
 html {
   background: $brand-primary;
@@ -56,4 +56,8 @@ button, .button {
   width: 1px;
   height: 1px;
   overflow: hidden;
+}
+
+.c-form-item {
+  margin-bottom: 1rem;
 }
