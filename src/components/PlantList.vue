@@ -1,5 +1,5 @@
 <template>
-  <div class="plant-list">
+  <div class="c-plant-list">
     <p v-if="plantsFetched && !hasPlants">
       You haven't added any plants yet!
     </p>
@@ -13,18 +13,18 @@
             :is-checked="isChecked(plant.id)"
             @toggle="toggled => handlePlantToggle(toggled, plant.id)"
             :plant="plant"
-            class="plant-list__plant"
+            class="c-plant-list__plant"
           />
         </template>
         <OptionButtons>
           <button
             v-if="hasPlants"
-            class="plant-list__water-button"
+            class="c-plant-list__water-button"
             type="submit"
           >
             Water Selected Plants
           </button>
-          <router-link class="plant-list__add-plant button" to="/add-plant"
+          <router-link class="c-plant-list__add-plant button" to="/add-plant"
             >Add a new plant</router-link
           >
         </OptionButtons>
@@ -78,7 +78,7 @@ export default {
 </script>
 
 <style>
-.plant-list__plant {
+.c-plant-list__plant {
   margin-bottom: 3rem;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <div class="app-footer">
-    <div class="app-footer__content">
-      <div class="app-footer__oss-attributes">
+  <div class="c-app-footer">
+    <div class="c-app-footer__content">
+      <div class="c-app-footer__oss-attributes">
         Icons made by
         <a href="https://www.flaticon.com/authors/freepik" title="Freepik"
           >Freepik</a
@@ -24,20 +24,24 @@ export default {
 <style lang="scss">
 @import "../assets/scss/variables";
 
-.app-footer {
+.c-app-footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 2rem;
+  background: $brand-secondary;
 }
 
-.app-footer__content {
+.c-app-footer__content {
   margin: 0 auto;
   max-width: $app-max-width;
   padding: 0 1.5rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
 }
 
-.app-footer__oss-attributes {
+.c-app-footer__oss-attributes {
   font-size: 0.8rem;
 }
 </style>

@@ -1,6 +1,18 @@
-$brand-primary: #4F2200;
-$brand-secondary: #002D4F;
+// Colors.
+$brand-secondary: #4A0965;
+$brand-primary: #5C8D07;
+$brand-primary-lighter: #92CB30;
+$brand-primary-lightest: #FFEFCD;
+$brand-complimentary: #7D0643;
+
 $font-primary: #fff;
-$link-primary: #88FF7C;
-$button-primary: #064F00;
+$link: $brand-primary-lighter;
+$link-hover: $brand-primary-lightest;
+$button-primary: $brand-primary;
+$button-hover: $brand-primary-lighter;
+
+$background: #222629;
+
+// Layout.
 $app-max-width: 1000px;
+

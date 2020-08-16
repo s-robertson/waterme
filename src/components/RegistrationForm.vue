@@ -1,5 +1,5 @@
 <template>
-  <div class="registration-form">
+  <div class="c-registration-form">
     <ErrorList :errors="registrationErrors" />
     <div v-if="errorMessage">
       {{ errorMessage }}
@@ -52,5 +52,3 @@ export default {
   }
 };
 </script>
-
-<style scoped></style>

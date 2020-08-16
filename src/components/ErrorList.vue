@@ -1,5 +1,5 @@
 <template>
-  <div class="error-list" aria-live="assertive">
+  <div class="c-error-list" aria-live="assertive">
     <ul v-if="errors">
       <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
     </ul>
@@ -17,5 +17,3 @@ export default {
   }
 };
 </script>
-
-<style scoped></style>

@@ -1,24 +1,24 @@
 <template>
-  <div class="plant-card">
-    <div class="plant-card__options">
+  <div class="c-plant-card">
+    <div class="c-plant-card__options">
       <input
         :id="checkboxId"
         :checked="isChecked"
         type="checkbox"
         @click="handleChange"
       />
-      <label class="plant-card__label" :for="checkboxId">
+      <label class="c-plant-card__label" :for="checkboxId">
         {{ plant.name }}
       </label>
-      <div class="plant-card__buttons">
-        <router-link :to="`edit-plant/${plant.id}`">
+      <div class="c-plant-card__buttons">
+        <router-link :to="`edit-plant/${plant.id}`" class="button--icon">
           <SettingsIcon
-            class="plant-card__settings"
+            class="c-plant-card__settings"
             :alt="`Edit ${plant.name}`"
           />
         </router-link>
         <button
-          class="button--plain plant-card__delete"
+          class="button--icon plant-card__delete"
           @click.prevent="handleDeleteClick"
         >
           <TrashIcon />
@@ -26,11 +26,14 @@
         </button>
       </div>
     </div>
-    <div class="plant-card__watering-progress">
-      <div class="plant-card__watering-progress-text">
+    <div class="c-plant-card__watering-progress">
+      <div class="c-plant-card__watering-progress-text">
         {{ `${daysRemaining} Days Remaining` }}
       </div>
-      <div class="plant-card__watering-progress-fill" :style="progressStyle" />
+      <div
+        class="c-plant-card__watering-progress-fill"
+        :style="progressStyle"
+      />
     </div>
   </div>
 </template>
@@ -94,31 +97,30 @@ export default {
 <style lang="scss">
 @import "../assets/scss/variables";
 
-.plant-card__options {
+.c-plant-card__options {
   margin-bottom: 1rem;
 }
 
-.plant-card__buttons {
+.c-plant-card__buttons {
   float: right;
   display: flex;
 }
 
-.plant-card__settings {
+.c-plant-card__settings {
   width: 25px;
   cursor: pointer;
-  color: #00dcff;
-  fill: $link-primary;
+  fill: $link;
   margin-right: 0.5rem;
 }
 
-.plant-card__watering-progress {
+.c-plant-card__watering-progress {
   border: 2px solid #fff;
   position: relative;
   height: 2rem;
   border-radius: 10px;
 }
 
-.plant-card__watering-progress-fill {
+.c-plant-card__watering-progress-fill {
   background: $brand-secondary;
   height: 2rem;
   border-radius: 10px;
@@ -128,13 +130,9 @@ export default {
   width: 25px;
   vertical-align: middle;
   display: inline-block;
-
-  svg {
-    fill: $link-primary;
-  }
 }
 
-.plant-card__watering-progress-text {
+.c-plant-card__watering-progress-text {
   position: absolute;
   width: 100%;
   text-align: center;

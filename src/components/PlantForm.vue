@@ -1,15 +1,6 @@
 <template>
   <form action="" @submit.prevent="handleSubmit">
-    <div aria-live="assertive">
-      <div v-if="hasErrors">
-        <p>Please correct the following errors:</p>
-        <ul>
-          <li v-for="(error, index) in errors" :key="index">
-            {{ error }}
-          </li>
-        </ul>
-      </div>
-    </div>
+    <ErrorList :errors="errors" />
     <div class="c-form-item">
       <label>
         Name:
@@ -34,10 +25,11 @@
 <script>
 import { mapActions } from "vuex";
 import OptionButtons from "@/components/OptionButtons";
+import ErrorList from "@/components/ErrorList";
 
 export default {
   name: "PlantForm",
-  components: { OptionButtons },
+  components: { ErrorList, OptionButtons },
   data() {
     return {
       plantName: "",
