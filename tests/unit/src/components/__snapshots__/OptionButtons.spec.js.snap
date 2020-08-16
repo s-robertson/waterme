@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OptionButtons component Should render with slotted children 1`] = `<div class="c-option-buttons">hello there</div>`;

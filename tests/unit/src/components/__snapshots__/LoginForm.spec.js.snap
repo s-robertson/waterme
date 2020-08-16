@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm component Should render any login errors 1`] = `
+<div class="login-form">
+  <errorlist-stub errors="Invalid password"></errorlist-stub>
+  <form action="">
+    <div class="c-form-item"><label>Email:
+        <input type="text" data-test="input-login-email"></label></div>
+    <div class="c-form-item"><label>Password:
+        <input type="text" data-test="input-login-password"></label></div>
+    <optionbuttons-stub><button type="submit">Login</button>
+      <router-link-stub to="/register" class="button">Register for a New Account</router-link-stub>
+    </optionbuttons-stub>
+  </form>
+</div>
+`;
+
+exports[`LoginForm component Should render correctly 1`] = `
+<div class="login-form">
+  <errorlist-stub errors=""></errorlist-stub>
+  <form action="">
+    <div class="c-form-item"><label>Email:
+        <input type="text" data-test="input-login-email"></label></div>
+    <div class="c-form-item"><label>Password:
+        <input type="text" data-test="input-login-password"></label></div>
+    <optionbuttons-stub><button type="submit">Login</button>
+      <router-link-stub to="/register" class="button">Register for a New Account</router-link-stub>
+    </optionbuttons-stub>
+  </form>
+</div>
+`;

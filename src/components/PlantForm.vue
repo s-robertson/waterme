@@ -60,6 +60,9 @@ export default {
     hasErrors() {
       return this.errors.length > 0;
     },
+    numericDays() {
+      return parseInt(this.days, 10);
+    },
     submitLabel() {
       if (this.plant) {
         return "Save Changes";
@@ -78,19 +81,18 @@ export default {
     ...mapActions(["addPlant", "updatePlant"]),
     handleSubmit() {
       if (this.validate()) {
+        const plantData = {
+          name: this.plantName,
+          days: this.numericDays
+        };
+
         if (this.plant) {
           this.updatePlant({
             id: this.plant.id,
-            data: {
-              name: this.plantName,
-              days: this.days
-            }
+            data: plantData
           });
         } else {
-          this.addPlant({
-            name: this.plantName,
-            days: this.days
-          });
+          this.addPlant(plantData);
         }
 
         this.$router.push("/");
@@ -102,7 +104,12 @@ export default {
       if (this.plantName.length === 0) {
         this.errors.push("Please enter a name for the plant.");
       }
-      if (this.days <= 0) {
+      if (!Number.isInteger(this.numericDays)) {
+        this.errors.push(
+          "The number of days between watering must be a number"
+        );
+      }
+      if (this.numericDays <= 0) {
         this.errors.push(
           "The number of days between watering must be greater than zero."
         );

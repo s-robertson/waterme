@@ -6,5 +6,6 @@ module.exports = {
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1"
   },
-  moduleFileExtensions: ["js", "vue", "json"]
+  moduleFileExtensions: ["js", "vue", "json"],
+  resetMocks: true
 };

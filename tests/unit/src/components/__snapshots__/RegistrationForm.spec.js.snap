@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegistrationForm component Should display any registration errors 1`] = `
+<div class="c-registration-form">
+  <errorlist-stub errors="Invalid email"></errorlist-stub>
+  <!---->
+  <form>
+    <div class="c-form-item"><label for="email">
+        Email address:
+        <input id="email" type="text"></label></div>
+    <div class="c-form-item"><label for="password">
+        Password:
+        <input id="password" type="password"></label></div> <button type="submit">Register</button>
+  </form>
+</div>
+`;
+
+exports[`RegistrationForm component Should render correctly 1`] = `
+<div class="c-registration-form">
+  <errorlist-stub errors=""></errorlist-stub>
+  <!---->
+  <form>
+    <div class="c-form-item"><label for="email">
+        Email address:
+        <input id="email" type="text"></label></div>
+    <div class="c-form-item"><label for="password">
+        Password:
+        <input id="password" type="password"></label></div> <button type="submit">Register</button>
+  </form>
+</div>
+`;

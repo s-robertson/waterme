@@ -3,9 +3,9 @@
 exports[`AppHeader component Should render correctly 1`] = `
 <div class="c-app-header">
   <div class="c-app-header__container">
-    <router-link to="/" class="c-app-header__logo-container">
+    <router-link-stub to="/" tag="a" ariacurrentvalue="page" event="click" class="c-app-header__logo-container">
       <planticon-stub alt="" role="presentation" class="c-app-header__logo"></planticon-stub> <span class="c-app-header__logo-text">Water Me</span>
-    </router-link>
+    </router-link-stub>
     <div class="c-app-header__menu">
       <buttonlogout-stub></buttonlogout-stub>
     </div>

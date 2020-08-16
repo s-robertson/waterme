@@ -12,9 +12,28 @@ exports[`PlantForm component Should render correctly 1`] = `
   <optionbuttons-stub><button type="submit" data-test="button-add-plant-submit">
       Add Plant
     </button>
-    <router-link to="/">
+    <router-link-stub to="/">
       Cancel
-    </router-link>
+    </router-link-stub>
+  </optionbuttons-stub>
+</form>
+`;
+
+exports[`PlantForm component Should validate plant information and display errors 1`] = `
+<form action="">
+  <errorlist-stub errors="Please enter a name for the plant.,The number of days between watering must be greater than zero."></errorlist-stub>
+  <div class="c-form-item"><label>
+      Name:
+      <input type="text" autocomplete="off" data-test="input-plant-name"></label></div>
+  <div class="c-form-item"><label>
+      Days between watering:
+      <input type="number" autocomplete="off" data-test="input-plant-days"></label></div>
+  <optionbuttons-stub><button type="submit" data-test="button-add-plant-submit">
+      Add Plant
+    </button>
+    <router-link-stub to="/">
+      Cancel
+    </router-link-stub>
   </optionbuttons-stub>
 </form>
 `;

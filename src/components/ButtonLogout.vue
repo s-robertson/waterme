@@ -1,12 +1,8 @@
 <template>
   <div class="c-button-logout">
-    <a
-      v-if="authenticated"
-      @click.prevent="handleClick"
-      href="#logout"
-      class="button"
-      >Logout</a
-    >
+    <button v-if="authenticated" @click="handleClick" class="button">
+      Logout
+    </button>
   </div>
 </template>
 

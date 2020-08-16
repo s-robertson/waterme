@@ -32,8 +32,7 @@ export default {
   data() {
     return {
       email: "",
-      password: "",
-      errorMessage: ""
+      password: ""
     };
   },
   computed: {
@@ -42,11 +41,12 @@ export default {
   methods: {
     ...mapActions(["register"]),
     async handleSubmit() {
-      try {
-        await this.register({ email: this.email, password: this.password });
+      const result = await this.register({
+        email: this.email,
+        password: this.password
+      });
+      if (result) {
         this.$router.push("/");
-      } catch (err) {
-        this.errorMessage = err;
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="c-error-list" aria-live="assertive">
-    <ul v-if="errors">
+    <ul v-if="errors.length">
       <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
     </ul>
   </div>

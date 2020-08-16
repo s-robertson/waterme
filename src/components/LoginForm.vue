@@ -3,13 +3,15 @@
     <ErrorList :errors="loginErrors" />
     <form action="" @submit.prevent="handleSubmit">
       <div class="c-form-item">
-        <label for="email"
-          >Email: <input v-model="email" id="email" type="text"
+        <label
+          >Email:
+          <input v-model="email" type="text" data-test="input-login-email"
         /></label>
       </div>
       <div class="c-form-item">
-        <label for="password"
-          >Password: <input v-model="password" id="password" type="password"
+        <label
+          >Password:
+          <input v-model="password" type="text" data-test="input-login-password"
         /></label>
       </div>
       <OptionButtons>

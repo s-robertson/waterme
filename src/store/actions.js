@@ -20,9 +20,12 @@ export default {
     try {
       await appAuth.register(email, password);
       commit("registered");
+      return true;
     } catch (err) {
       commit("setRegistrationErrors", err.messages);
     }
+
+    return false;
   },
   async fetchPlants({ commit }) {
     const plants = await storage.fetchPlants();

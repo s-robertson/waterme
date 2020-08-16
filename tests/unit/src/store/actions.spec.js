@@ -12,8 +12,6 @@ jest.mock("@/store/storage/repository", () => ({
 describe("vuex actions", () => {
   const commit = jest.fn();
 
-  afterEach(() => jest.resetAllMocks());
-
   describe("init", () => {
     it("should commit all expected mutations", async () => {
       const state = {};
