@@ -1,9 +1,7 @@
 // https://docs.cypress.io/api/introduction/api.html
-import { authenticate } from "../helpers";
-
 describe("Critical flow", () => {
   beforeEach(() => {
-    authenticate();
+    cy.login();
   });
 
   it("Adds, waters, and deletes a plant", () => {
