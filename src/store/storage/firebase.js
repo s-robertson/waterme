@@ -4,13 +4,13 @@ import "firebase/firestore";
 
 export default (() => {
   const firebaseConfig = {
-    apiKey: "AIzaSyBRWxJBX1pm4o30Un-OyXwnEgWz-JyIw58",
-    authDomain: "waterme-55931.firebaseapp.com",
-    databaseURL: "https://waterme-55931.firebaseio.com",
-    projectId: "waterme-55931",
-    storageBucket: "waterme-55931.appspot.com",
-    messagingSenderId: "497975740241",
-    appId: "1:497975740241:web:d9a98bd2e0557491483570"
+    apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+    authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.VUE_APP_FIREBASE_DATABASE_URL,
+    projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.VUE_APP_FIREBASE_SENDER_ID,
+    appId: process.env.VUE_APP_FIREBASE_APP_ID
   };
 
   return firebase.initializeApp(firebaseConfig);
