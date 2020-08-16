@@ -123,7 +123,8 @@ export default {
 }
 
 .c-plant-card__watering-progress-fill {
-  background: $brand-secondary;
+  transition: width 1.5s;
+  background: #044d5a;
   height: 2rem;
   border-radius: 10px;
 }
